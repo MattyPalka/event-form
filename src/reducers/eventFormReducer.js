@@ -5,7 +5,8 @@ const initData =
     name: "",
     surname: "",
     email: "",
-    date: `${dateNow.getFullYear()}-${("0" + (dateNow.getMonth() + 1)).slice(-2)}-${("0" + dateNow.getDate()).slice(-2)}`
+    date: `${dateNow.getFullYear()}-${("0" + (dateNow.getMonth() + 1)).slice(-2)}-${("0" + dateNow.getDate()).slice(-2)}`,
+    validated: false
 }
 export default (state = initData, action) => {
     if (action.type === 'updateEventForm') {
@@ -23,6 +24,11 @@ export default (state = initData, action) => {
             case 'date':
                 newState.date = action.payload.data
                 break
+            case 'validated':
+                newState.validated = action.payload.data
+                break
+            case 'clearForm':
+                newState = initData
             default:
                 break
         }
