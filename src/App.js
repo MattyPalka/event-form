@@ -1,17 +1,16 @@
 import React from 'react';
-import axios from 'axios'
+
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import './App.css';
 
-const buttonClicked = () => {
-  axios.post('/api/storeEvent', {test: 'test'}).then((res) => {
-    console.log(res.data)
-  })
-}
+import EventForm from './components/EventForm'
 
 function App() {
   return (
     <div className="App">
-      <button onClick={buttonClicked}>CLICK ME </button>
+      <EventForm />
     </div>
   );
 }

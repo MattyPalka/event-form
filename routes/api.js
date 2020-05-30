@@ -4,7 +4,7 @@ const router = express.Router()
 const db = require('../database/db')
 
 router.post('/storeEvent', async (req, res) => {
-    res.send(`${req.body.test}`)
+    res.json(req.body)
 })
 
 module.exports = router
