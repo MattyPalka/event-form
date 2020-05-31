@@ -95,8 +95,8 @@ class EventForm extends Component {
             <div className='event-form'>
                 <ToastMessage />
                 <div className='row'>
-                    <div className='col-sm-12 justify-content-center'>
-                        <h2>Submit Application for Event</h2>
+                    <div className='col-sm-12'>
+                        <h2 className="text-center">Submit Application for Event</h2>
                     </div>
                     <div className='col-sm-12 d-flex justify-content-center'>
 
@@ -136,7 +136,7 @@ class EventForm extends Component {
                                 </div>
 
                             </div>
-                            <button className="btn btn-primary" type="submit" disabled={!this.props.formData.validated}>Submit application</button>
+                            <button className="btn btn-primary col-sm-12" type="submit" disabled={!this.props.formData.validated}>Submit application</button>
                         </form>
                     </div>
                 </div>
