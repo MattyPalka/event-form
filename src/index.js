@@ -11,11 +11,9 @@ import rootReducer from './reducers/rootReducer'
 const theStore = applyMiddleware(reduxPromise)(createStore)(rootReducer)
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={theStore}>
       <App />
-    </ Provider>
-  </React.StrictMode>,
+    </ Provider>,
   document.getElementById('root')
 );
 

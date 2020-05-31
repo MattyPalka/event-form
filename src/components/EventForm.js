@@ -2,23 +2,33 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import updateForm from '../actions/updateForm'
+import toast from '../actions/toast'
 import axios from 'axios'
+
+import ToastMessage from '../utilities/Toast'
+
 
 class EventForm extends Component {
 
     formSubmitted = (e) => {
         e.preventDefault()
+        this.props.updateForm('', 'clearForm')
+        this.props.updateToast('Sending...', 'show')
         axios.post('/api/storeEvent', {
             name: this.props.formData.name,
             surname: this.props.formData.surname,
             email: this.props.formData.email,
             date: this.props.formData.date
         }).then((res) => {
-            console.log(res.data)
+            if (res.data.result.ok === 1) {
+                this.props.updateToast('Your aplication was sent successfully', 'show')
+            } else {
+                this.props.updateToast('There was a problem with sending your application. Please try again', 'show')
+            }
         })
     }
 
-    validateForm() {
+    validateForm = () => {
         let name = document.querySelector('#validationName')
         let nameValidated = false
         if (name.value.match(/\d/g) !== null || name.value.length < 2) {
@@ -81,9 +91,9 @@ class EventForm extends Component {
     }
 
     render() {
-
         return (
             <div className='event-form'>
+                <ToastMessage />
                 <div className='row'>
                     <div className='col-sm-12 justify-content-center'>
                         <h2>Submit Application for Event</h2>
@@ -137,13 +147,15 @@ class EventForm extends Component {
 
 function mapStateToProps(state) {
     return {
-        formData: state.eventForm
+        formData: state.eventForm,
+        toastData: state.toast
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        updateForm: updateForm
+        updateForm: updateForm,
+        updateToast: toast
     }, dispatch)
 }
 

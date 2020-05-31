@@ -29,6 +29,7 @@ export default (state = initData, action) => {
                 break
             case 'clearForm':
                 newState = initData
+                break;
             default:
                 break
         }
