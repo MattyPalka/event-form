@@ -1,3 +1,15 @@
+## Built version
+Built version of this project can be seen at http://event.mattypalka.usermd.net
+
+## In dev!
+If you want to run it in development yourself don't forget to add .env file with 2 variables
+ - DB_NAME : Name of the database in your mongo project
+ - MONGODB_URI : Uri to connect to MongoDB
+ 
+ ## In production:
+ Remember to delete proxy from package.json as this is required to run in dev
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
